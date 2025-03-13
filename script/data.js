@@ -30,7 +30,7 @@ function showPets(pets) {
   petContainer.innerHTML = ``;
   if (pets.length == 0) {
     error.innerHTML = `
-        <img src="../images/error.webp" class="w-32">
+        <img src="/images/error.webp" class="w-32">
             <h3 class="font-bold text-2xl">No Information Available</h3>
             <p class="text-sm text-[#131313B2] w-3/4 text-center">It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
                 its layout. The point of using Lorem Ipsum is that it has a.</p>
@@ -48,24 +48,24 @@ function showPets(pets) {
             <h4 class="text-base font-bold">${pet.pet_name}</h4>
             <div>
                 <p class="flex gap-2 text-sm font-normal text-[#131313B2]">
-                    <img src="../images/breed.svg" class="w-4"> Breed: ${
+                    <img src="/images/breed.svg" class="w-4"> Breed: ${
                       pet.breed != undefined ? pet.breed : "Unknown"
                     }
                 </p>
                 <p class="flex gap-2 text-sm font-normal text-[#131313B2]">
-                    <img src="../images/birth.svg" class="w-4"> Birth: ${
+                    <img src="/images/birth.svg" class="w-4"> Birth: ${
                       pet.date_of_birth != undefined
                         ? pet.date_of_birth
                         : "Unknown"
                     }
                 </p>
                 <p class="flex gap-2 text-sm font-normal text-[#131313B2]">
-                    <img src="../images/gender.svg" class="w-4"> Gender: ${
+                    <img src="/images/gender.svg" class="w-4"> Gender: ${
                       pet.gender != undefined ? pet.gender : "Unknown"
                     }
                 </p>
                 <p class="flex gap-2 text-sm font-normal text-[#131313B2]">
-                    <img src="../images/price.svg" class="w-4"> Price: ${
+                    <img src="/images/price.svg" class="w-4"> Price: ${
                       pet.price != null ? price : "Unknown"
                     }
                 </p>
