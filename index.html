@@ -31,6 +31,10 @@
         border: 1px solid #0e7a81;
         border-radius: 100px;
       }
+      .likeActive {
+        background: #0e7a811a;
+        border: 1px solid #0e7a81;
+      }
     </style>
   </head>
   <body class="lato">
@@ -105,6 +109,7 @@
       <div class="flex justify-between mb-7">
         <h4 class="text-xl font-black">Best Deal For you</h4>
         <button
+          id="sortView"
           class="text-white bg-[#0E7A81] px-6 py-3 rounded-lg font-bold text-lg cursor-pointer border border-white hover:bg-white hover:border-[#0E7A81] hover:text-[#0E7A81]"
         >
           Sort by price
@@ -120,15 +125,13 @@
 
         <div class="max-w-64 w-full rounded-lg border border-[#0E7A8126]">
           <h1 class="text-base font-black text-center p-2">Liked Pets</h1>
-          <div id="like" class="grid grid-cols-2 gap-2 self-start px-2">
-
-          </div>
+          <div id="like" class="grid grid-cols-2 gap-2 self-start px-2"></div>
         </div>
       </section>
 
       <dialog id="petDetails" class="modal">
         <div class="modal-box">
-            <div id="details"></div>
+          <div id="details"></div>
           <div class="modal-action">
             <form method="dialog">
               <button class="btn">Close</button>
@@ -197,6 +200,16 @@
     </footer>
 
     <script src="script/data.js"></script>
-    <script src="script/like.js"></script>
+    <script>
+      document.getElementById("sortView").addEventListener("click", () => {
+        sortAscending = !sortAscending;
+        const sortedPets = [...currentPets].sort((a, b) => {
+          const priceA = a.price !== null ? a.price : 0;
+          const priceB = b.price !== null ? b.price : 0;
+          return sortAscending ? priceA - priceB : priceB - priceA;
+        });
+        showPets(sortedPets);
+      });
+    </script>
   </body>
 </html>

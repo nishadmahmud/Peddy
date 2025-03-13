@@ -11,6 +11,9 @@ const loadCatagories = () => {
     .then((data) => showCatagories(data.categories));
 };
 
+let currentPets = [];
+let sortAscending = true;
+
 const loadPets = (id) => {
   const url = `https://openapi.programming-hero.com/api/peddy/category/${id}`;
   fetch(url)
@@ -19,7 +22,9 @@ const loadPets = (id) => {
       const clickBtn = document.getElementById(`btn-${id}`);
       removeActiveBtn();
       clickBtn.classList.add("active");
-      showPets(data.data);
+      currentPets = data.data;
+      sortAscending = true;
+      showPets(currentPets);
     });
 };
 
@@ -90,16 +95,16 @@ function showDetails(data) {
       `;
 }
 
-function likedPets(petId){
+function likedPets(petId) {
   const url = `https://openapi.programming-hero.com/api/peddy/pet/${petId}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
       const imgContainer = document.getElementById("like");
-      const img = document.createElement('div');
+      const img = document.createElement("div");
       img.innerHTML = `
         <img src="${data.petData.image}" class="rounded-lg">
-      `
+      `;
       imgContainer.append(img);
     });
 }
@@ -110,7 +115,7 @@ function showPets(pets) {
   const error = document.getElementById("errorScreen");
   petContainer.innerHTML = ``;
   if (pets.length == 0) {
-    petContainer.classList.add('hidden');
+    petContainer.classList.add("hidden");
     error.innerHTML = `
         <img src="images/error.webp" class="w-32">
             <h3 class="font-bold text-2xl">No Information Available</h3>
@@ -120,7 +125,7 @@ function showPets(pets) {
     error.classList.remove("hidden");
     return;
   }
-  petContainer.classList.remove('hidden');
+  petContainer.classList.remove("hidden");
   error.classList.add("hidden");
   for (let pet of pets) {
     const price = `${pet.price}$`;
