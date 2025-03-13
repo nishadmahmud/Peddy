@@ -26,9 +26,9 @@
         font-style: normal;
       }
 
-      .active{
-        background: #0E7A811A;
-        border: 1px solid #0E7A81;
+      .active {
+        background: #0e7a811a;
+        border: 1px solid #0e7a81;
         border-radius: 100px;
       }
     </style>
@@ -105,24 +105,32 @@
       <div class="flex justify-between mb-7">
         <h4 class="text-xl font-black">Best Deal For you</h4>
         <button
-            class="text-white bg-[#0E7A81] px-6 py-3 rounded-lg font-bold text-lg cursor-pointer border border-white hover:bg-white hover:border-[#0E7A81] hover:text-[#0E7A81]"
-          >
-            Sort by price
-          </button>
+          class="text-white bg-[#0E7A81] px-6 py-3 rounded-lg font-bold text-lg cursor-pointer border border-white hover:bg-white hover:border-[#0E7A81] hover:text-[#0E7A81]"
+        >
+          Sort by price
+        </button>
       </div>
 
       <section class="grid grid-cols-4 gap-5">
-        <div id="pets" class="col-span-3 grid grid-cols-3 gap-5">
-            
-        </div>
-        <div id="errorScreen" class="m-auto col-span-3 flex flex-col justify-center items-center my-24 gap-4">
-                
-        </div>
+        <div id="pets" class="col-span-3 grid grid-cols-3 gap-5"></div>
+        <div
+          id="errorScreen"
+          class="m-auto col-span-3 flex flex-col justify-center items-center my-24 gap-4"
+        ></div>
 
-        <div class="rounded-lg border border-[#0E7A8126]">
-
-        </div>
+        <div class="rounded-lg border border-[#0E7A8126]"></div>
       </section>
+
+      <dialog id="petDetails" class="modal">
+        <div class="modal-box">
+            <div id="details"></div>
+          <div class="modal-action">
+            <form method="dialog">
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </main>
 
     <footer class="bg-black mt-8">

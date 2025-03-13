@@ -23,6 +23,71 @@ const loadPets = (id) => {
     });
 };
 
+const showPetDetails = (petID) => {
+  const url = `https://openapi.programming-hero.com/api/peddy/pet/${petID}`;
+  document.getElementById("petDetails").showModal();
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => showDetails(data));
+};
+
+function showDetails(data) {
+  const details = document.getElementById("details");
+  const price = `${data.petData.price}$`;
+  details.innerHTML = ``;
+  details.innerHTML = `
+        <div class="card bg-base-100">
+          <figure>
+            <img src="${data.petData.image}" class=" rounded-lg" />
+          </figure>
+          <div class="card-body">
+            <h4 class="text-xl font-bold">${data.petData.pet_name}</h4>
+            <div class="grid grid-cols-2 gap-1">
+              <p class="flex gap-2 text-sm font-normal text-[#131313B2]">
+                <img src="images/breed.svg" class="w-4" /> Breed:
+                ${
+                  data.petData.breed != undefined
+                    ? data.petData.breed
+                    : "Unknown"
+                }
+              </p>
+              <p class="flex gap-2 text-sm font-normal text-[#131313B2]">
+                <img src="images/birth.svg" class="w-4" /> Birth:
+                ${
+                  data.petData.date_of_birth != undefined
+                    ? data.petData.date_of_birth
+                    : "Unknown"
+                }
+              </p>
+              <p class="flex gap-2 text-sm font-normal text-[#131313B2]">
+                <img src="images/gender.svg" class="w-4" /> Gender:
+                ${
+                  data.petData.gender != undefined
+                    ? data.petData.gender
+                    : "Unknown"
+                }
+              </p>
+              <p class="flex gap-2 text-sm font-normal text-[#131313B2]">
+                <img src="images/price.svg" class="w-4" /> Price:
+                ${data.petData.price != null ? price : "Unknown"}
+              </p>
+              <p class="flex gap-2 text-sm font-normal text-[#131313B2]">
+                <img src="images/price.svg" class="w-4" /> Vaccinated status:
+                ${
+                  data.petData.vaccinated_status != null
+                    ? data.petData.vaccinated_status
+                    : "Unknown"
+                }
+              </p>
+            </div>
+            <hr class="border-gray-200 my-3">
+            <h4 class="text-sm font-semibold mb-2">Details Information</h4>
+            <p class="text-sm font-normal text-[#131313B2]">${data.petData.pet_details}</p>
+          </div>
+        </div>
+      `;
+}
+
 function showPets(pets) {
   console.log(pets.length);
   const petContainer = document.getElementById("pets");
@@ -73,9 +138,11 @@ function showPets(pets) {
         </div>
         <hr class="border-gray-200 my-3">
         <div class="flex gap-2">
-            <button class="px-3 rounded-lg border border-[#0E7A8126] hover:bg-gray-200"><img src="../images/like.svg"></button> 
+            <button class="px-3 rounded-lg border border-[#0E7A8126] hover:bg-gray-200"><img src="images/like.svg"></button> 
             <button class="text-[#0E7A81] text-base font-bold py-2 px-4 border rounded-lg border-[#0E7A8126] hover:bg-[#0E7A81] hover:text-white">Adopt</button> 
-            <button class="text-[#0E7A81] text-base font-bold py-2 px-4 border rounded-lg border-[#0E7A8126] hover:bg-[#0E7A81] hover:text-white">Details</button> 
+            <button onclick="showPetDetails(${
+              pet.petId
+            })" class="text-[#0E7A81] text-base font-bold py-2 px-4 border rounded-lg border-[#0E7A8126] hover:bg-[#0E7A81] hover:text-white">Details</button> 
         </div>
     `;
     div.classList.add("p-4", "border", "rounded-lg", "border-gray-200");
