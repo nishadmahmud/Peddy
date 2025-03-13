@@ -82,10 +82,26 @@ function showDetails(data) {
             </div>
             <hr class="border-gray-200 my-3">
             <h4 class="text-sm font-semibold mb-2">Details Information</h4>
-            <p class="text-sm font-normal text-[#131313B2]">${data.petData.pet_details}</p>
+            <p class="text-sm font-normal text-[#131313B2]">${
+              data.petData.pet_details
+            }</p>
           </div>
         </div>
       `;
+}
+
+function likedPets(petId){
+  const url = `https://openapi.programming-hero.com/api/peddy/pet/${petId}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      const imgContainer = document.getElementById("like");
+      const img = document.createElement('div');
+      img.innerHTML = `
+        <img src="${data.petData.image}" class="rounded-lg">
+      `
+      imgContainer.append(img);
+    });
 }
 
 function showPets(pets) {
@@ -94,6 +110,7 @@ function showPets(pets) {
   const error = document.getElementById("errorScreen");
   petContainer.innerHTML = ``;
   if (pets.length == 0) {
+    petContainer.classList.add('hidden');
     error.innerHTML = `
         <img src="images/error.webp" class="w-32">
             <h3 class="font-bold text-2xl">No Information Available</h3>
@@ -103,6 +120,7 @@ function showPets(pets) {
     error.classList.remove("hidden");
     return;
   }
+  petContainer.classList.remove('hidden');
   error.classList.add("hidden");
   for (let pet of pets) {
     const price = `${pet.price}$`;
@@ -138,7 +156,9 @@ function showPets(pets) {
         </div>
         <hr class="border-gray-200 my-3">
         <div class="flex gap-2">
-            <button class="px-3 rounded-lg border border-[#0E7A8126] hover:bg-gray-200"><img src="images/like.svg"></button> 
+            <button onclick="likedPets(${
+              pet.petId
+            })" class="px-3 rounded-lg border border-[#0E7A8126] hover:bg-gray-200"><img src="images/like.svg"></button> 
             <button class="text-[#0E7A81] text-base font-bold py-2 px-4 border rounded-lg border-[#0E7A8126] hover:bg-[#0E7A81] hover:text-white">Adopt</button> 
             <button onclick="showPetDetails(${
               pet.petId

@@ -111,14 +111,19 @@
         </button>
       </div>
 
-      <section class="grid grid-cols-4 gap-5">
-        <div id="pets" class="col-span-3 grid grid-cols-3 gap-5"></div>
+      <section class="flex gap-5">
+        <div id="pets" class="w-3/4 grid grid-cols-3 gap-5 self-start"></div>
         <div
           id="errorScreen"
-          class="m-auto col-span-3 flex flex-col justify-center items-center my-24 gap-4"
+          class="w-3/4 flex flex-col justify-start items-center my-24 gap-4"
         ></div>
 
-        <div class="rounded-lg border border-[#0E7A8126]"></div>
+        <div class="max-w-64 w-full rounded-lg border border-[#0E7A8126]">
+          <h1 class="text-base font-black text-center p-2">Liked Pets</h1>
+          <div id="like" class="grid grid-cols-2 gap-2 self-start px-2">
+
+          </div>
+        </div>
       </section>
 
       <dialog id="petDetails" class="modal">
