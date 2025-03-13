@@ -47,7 +47,7 @@
               <h2 class="text-2xl font-bold">Peddy</h2>
             </a>
           </div>
-          <div class="text-sm text-[#13131399] space-x-4 -ml-28">
+          <div class="text-sm text-[#13131399] space-x-4 -ml-28 md:block hidden">
             <button class="cursor-pointer">Home</button>
             <button class="cursor-pointer">Shop</button>
             <button class="cursor-pointer">Contact</button>
@@ -98,13 +98,13 @@
     <main class="max-w-[1060px] m-auto">
       <div class="text-center space-y-5 mb-10">
         <h2 class="text-3xl font-black">Adopt Your Best Friend</h2>
-        <p class="text-sm text-[#131313B2] w-7/12 m-auto">
+        <p class="text-sm text-[#131313B2] sm:w-full md:w-7/12 m-auto">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum is that it has a.
         </p>
       </div>
-      <div id="categoryContainer" class="flex gap-5 justify-between mb-7"></div>
+      <div id="categoryContainer" class="grid md:grid-cols-4 grid-cols-2 gap-5 md:justify-between mb-7"></div>
 
       <div class="flex justify-between mb-7">
         <h4 class="text-xl font-black">Best Deal For you</h4>
@@ -116,16 +116,16 @@
         </button>
       </div>
 
-      <section class="flex gap-5">
-        <div id="pets" class="w-3/4 grid grid-cols-3 gap-5 self-start"></div>
+      <section class="grid grid-cols-4 gap-5">
+        <div id="pets" class="md:col-span-3 col-span-3 grid md:grid-cols-3 grid-cols-1 gap-5 self-start"></div>
         <div
           id="errorScreen"
-          class="w-3/4 flex flex-col justify-start items-center my-24 gap-4"
+          class="col-span-3 flex flex-col justify-center items-center my-24 gap-4"
         ></div>
 
-        <div class="max-w-64 w-full rounded-lg border border-[#0E7A8126]">
+        <div class="col-span-1 rounded-lg border border-[#0E7A8126]">
           <h1 class="text-base font-black text-center p-2">Liked Pets</h1>
-          <div id="like" class="grid grid-cols-2 gap-2 self-start px-2"></div>
+          <div id="like" class="grid grid-cols-1 md:grid-cols-2 gap-2 self-start px-2"></div>
         </div>
       </section>
 
@@ -142,8 +142,8 @@
     </main>
 
     <footer class="bg-black mt-8">
-      <div class="max-w-[1060px] m-auto py-20 flex justify-between">
-        <div class="space-y-5">
+      <div class="max-w-[1060px] m-auto py-20 grid grid-col-2 gap-5 md:flex md:justify-between">
+        <div class="space-y-5 col-span-2">
           <div class="flex gap-2">
             <img src="images/logo.webp" />
             <h4 class="text-white text-2xl font-black">Peddy</h4>

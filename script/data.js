@@ -186,9 +186,6 @@ function showCatagories(categories) {
                 <h4 class="font-bold text-xl">${category.category}</h4>
             </button>
         `;
-
-    card.classList.add("w-1/4");
-
     catagoryContainer.append(card);
   });
 }
