@@ -38,7 +38,7 @@ function showPets(pets) {
     error.classList.remove("hidden");
     return;
   }
-  error.classList.add('hidden');
+  error.classList.add("hidden");
   for (let pet of pets) {
     const price = `${pet.price}$`;
     const div = document.createElement("div");
@@ -90,7 +90,7 @@ function showCatagories(categories) {
     const card = document.createElement("div");
     card.innerHTML = `
             <button id="btn-${category.category}" onclick="loadPets('${category.category}')" class="flex gap-4 rounded-lg border border-[#0E7A8126] p-6 w-full items-center justify-center hover:bg-[#0E7A811A] hover:border-[#0E7A81] transition-all duration-300 ease-in-out">
-                <img src="${category.category_icon}" class="w-11">
+                <img src="${category.category_icon}" class="w-11 h-11">
                 <h4 class="font-bold text-xl">${category.category}</h4>
             </button>
         `;
