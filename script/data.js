@@ -20,6 +20,10 @@ const loadPets = (id) => {
   const url = `https://openapi.programming-hero.com/api/peddy/category/${id}`;
   
   const minimumLoadTime = new Promise(resolve => setTimeout(resolve, 500));
+  const error = document.getElementById("errorScreen");
+  error.innerHTML = ``;
+  error.classList.remove('my-24');
+  error.classList.add('mt-10','mb-24','hidden');
 
   Promise.all([fetch(url), minimumLoadTime])
     .then(([response]) => response.json())
