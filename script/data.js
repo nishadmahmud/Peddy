@@ -15,9 +15,14 @@ let currentPets = [];
 let sortAscending = true;
 
 const loadPets = (id) => {
+  showLoading(); 
+
   const url = `https://openapi.programming-hero.com/api/peddy/category/${id}`;
-  fetch(url)
-    .then((res) => res.json())
+  
+  const minimumLoadTime = new Promise(resolve => setTimeout(resolve, 500));
+
+  Promise.all([fetch(url), minimumLoadTime])
+    .then(([response]) => response.json())
     .then((data) => {
       const clickBtn = document.getElementById(`btn-${id}`);
       removeActiveBtn();
@@ -25,6 +30,7 @@ const loadPets = (id) => {
       currentPets = data.data;
       sortAscending = true;
       showPets(currentPets);
+      hideLoading();
     });
 };
 
@@ -123,6 +129,7 @@ function showPets(pets) {
                 its layout. The point of using Lorem Ipsum is that it has a.</p>
     `;
     error.classList.remove("hidden");
+    
     return;
   }
   petContainer.classList.remove("hidden");
@@ -189,5 +196,14 @@ function showCatagories(categories) {
     catagoryContainer.append(card);
   });
 }
+
+const showLoading = () => {
+  document.getElementById("loading").classList.remove("hidden");
+  document.getElementById("pets").classList.add("hidden");
+};
+const hideLoading = () => {
+  document.getElementById("loading").classList.add("hidden");
+  document.getElementById("pets").classList.remove("hidden");
+};
 
 loadCatagories();
